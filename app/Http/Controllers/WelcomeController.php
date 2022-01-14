@@ -14,6 +14,6 @@ class WelcomeController extends Controller
         $selection_past = Activity::where('begin_date', '<', now())->inRandomOrder()->take(5)->get();
         $locations = Location::all();
 
-        return view('welcome',compact('upcoming', 'selection_past', 'locations'));
+        return view('welcome', compact('upcoming', 'selection_past', 'locations'));
     }
 }
