@@ -11,6 +11,10 @@ class Activity extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $casts = [
+        'begin_date' => 'datetime',
+    ];
+
     public function location()
     {
         return $this->belongsTo(Location::class);
