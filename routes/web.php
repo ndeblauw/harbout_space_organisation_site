@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
 
-Route::get('test', function() {
+Route::get('test', function () {
     abort(401);
     //throw new \Exception('error Nico morning now awaken');
 });
