@@ -20,6 +20,8 @@ Route::get('test', function () {
     throw new \Exception('error Nico morning now awaken');
 });
 
+Route::resource('activities', \App\Http\Controllers\ActivityController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

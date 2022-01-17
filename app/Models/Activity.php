@@ -11,6 +11,8 @@ class Activity extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
     protected $casts = [
         'begin_date' => 'datetime',
     ];
