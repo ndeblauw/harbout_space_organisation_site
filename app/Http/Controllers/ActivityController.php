@@ -23,7 +23,7 @@ class ActivityController extends Controller
 
     public function store(CreateActivityRequest $request)
     {
-        $activity = Activity::create( $request->validated() );
+        $activity = Activity::create($request->validated());
 
         return redirect()->route('activities.index');
     }
@@ -40,7 +40,7 @@ class ActivityController extends Controller
 
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        $activity->update( $request->validated() );
+        $activity->update($request->validated());
 
         return redirect()->route('activities.index');
     }

@@ -21,7 +21,6 @@ class Textarea extends Component
     public $type;
     public $rows;
 
-
     public function __construct(
         string $name,
         string $label = null,

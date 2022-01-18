@@ -8,7 +8,7 @@ class ActivityToggleVisibilityController extends Controller
 {
     public function __invoke(Activity $activity)
     {
-        $activity->update(['visible' => !$activity->visible]);
+        $activity->update(['visible' => ! $activity->visible]);
 
         return redirect()->back();
     }
