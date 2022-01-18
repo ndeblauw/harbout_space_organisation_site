@@ -15,6 +15,7 @@ class Activity extends Model
 
     protected $casts = [
         'begin_date' => 'datetime',
+        'visible' => 'boolean',
     ];
 
     public function location()
