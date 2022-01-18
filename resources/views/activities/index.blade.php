@@ -31,7 +31,9 @@
                                         {{$activity->title}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href="{{ route('activities.toggle', ['activity' => $activity]) }}">
                                         {{ $activity->visible ? 'Yes' : 'No' }}
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{route('activities.edit', ['activity' => $activity])}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>

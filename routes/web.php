@@ -21,6 +21,7 @@ Route::get('test', function () {
 });
 
 Route::resource('activities', \App\Http\Controllers\ActivityController::class);
+Route::get('activities/{activity}/toggle', \App\Http\Controllers\ActivityToggleVisibilityController::class)->name('activities.toggle');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
