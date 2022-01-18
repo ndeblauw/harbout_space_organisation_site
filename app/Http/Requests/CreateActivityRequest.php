@@ -8,7 +8,7 @@ class CreateActivityRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return (auth()->check() && auth()->user()->is_admin);
     }
 
     public function rules()
