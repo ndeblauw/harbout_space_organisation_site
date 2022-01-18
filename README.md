@@ -14,40 +14,53 @@ This is a standard Laravel project. All dependencies are listed in <code>compose
 ### Installing
 The standard way of installing a Laravel application suffices
 
-    https: git clone https://github.com/ndeblauw/harbout_space_organisation_site.git
+Clone the repository
+```
+git clone https://github.com/ndeblauw/harbout_space_organisation_site.git
+```
 
-Install composer dependencies
+Go into the app directory & install composer dependencies
 
-    composer install
+```
+composer install
+```
 
 Copy <code>.env.example</code> to <code>.env</code> and make sure to set the application name, application url and database parameters.
 
-Make sure the application key is set
+Set the application key
 
-    php artisan key:generate
+```
+php artisan key:generate
+```
 
 Migrate so the tables are created
 
-    php artisan migrate
+```
+php artisan migrate
+```
 
 If wanted, you can seed the app with some test data
 
-    php artisan db:seed
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
 ```
-code blocks for commands
+php artisan db:seed
 ```
+
+Install npm dependencies and compile assets
+
+```
+npm install && npm run dev
+```
+
+### Executing the program
+There are three levels of access:
+* **Browsing** the site: go to the main domain of the site and start browsing.
+* **User functions**: create an account and/or login to get access to the user functions. Now it is possible to register for activities.
+* **Admin functions**: set the "is_admin" property of a user to 1. Once you have an admin, you can make other users admin as well through the website interface
 
 ## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+If you don't understand something:
+* Use the knowledge you gained during class. Debug, add ray commands (or dd() statements to watch inbetween pieces in the code execution)
+* Get help from a fellow (student) to get you going
 
 ## Authors
 
