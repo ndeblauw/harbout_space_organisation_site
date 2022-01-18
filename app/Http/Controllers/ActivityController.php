@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateActivityRequest;
+use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
@@ -19,15 +21,9 @@ class ActivityController extends Controller
         return view('activities.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateActivityRequest $request)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'visible' => ['boolean'],
-        ]);
-
-        $activity = Activity::create($validated);
+        $activity = Activity::create( $request->validated() );
 
         return redirect()->route('activities.index');
     }
@@ -42,15 +38,9 @@ class ActivityController extends Controller
         return view('activities.edit', compact('activity'));
     }
 
-    public function update(Request $request, Activity $activity)
+    public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'visible' => ['boolean'],
-        ]);
-
-        $activity->update($validated);
+        $activity->update( $request->validated() );
 
         return redirect()->route('activities.index');
     }
