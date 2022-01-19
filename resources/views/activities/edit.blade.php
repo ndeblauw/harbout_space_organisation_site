@@ -1,6 +1,6 @@
 <x-site-layout>
 
-    <form action="{{route('activities.update', ['activity' => $activity])}}" method="post" class="mb-16 flex">
+    <form action="{{route('activities.update', ['activity' => $activity])}}" method="post" enctype="multipart/form-data" class="mb-16 flex">
         @csrf
         @method('put')
 
@@ -8,6 +8,8 @@
             <x-form-text name="title" :value="$activity->title" required/>
             <x-form-textarea name="description" :value="$activity->description"/>
             <x-form-boolean name="visible" :value="$activity->visible"/>
+
+            <input type="file" name="image">
 
             <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 rounded hover:bg-blue-600 text-white float-right">Save</button>
         </div>
