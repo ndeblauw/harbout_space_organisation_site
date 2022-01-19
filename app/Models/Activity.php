@@ -30,7 +30,7 @@ class Activity extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('small')
-            ->crop('crop-center', 300,50)
+            ->crop('crop-center', 300, 50)
             ->width(300)
             ->height(50)
             ->sharpen(5);

@@ -40,14 +40,13 @@ class ActivityController extends Controller
 
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        ray($request, $request->validated() );
+        ray($request, $request->validated());
 
         $activity->update($request->validated());
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $activity->addMediaFromRequest('image')->toMediaCollection('images');
         }
-
 
         return redirect()->route('activities.index');
     }
