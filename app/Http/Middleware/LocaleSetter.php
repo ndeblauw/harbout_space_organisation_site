@@ -11,7 +11,7 @@ class LocaleSetter
     {
         ray($request);
 
-        if($request->getHost() == 'organisation_es.test') {
+        if ($request->getHost() == 'organisation_es.test') {
             app()->setLocale('es');
         }
 
