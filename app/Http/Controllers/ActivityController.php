@@ -46,6 +46,8 @@ class ActivityController extends Controller
             $activity->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
+        cache()->forget('welcome_upcoming');
+        cache()->forget('welcome_past');
         session()->flash('success', 'Update of <strong>'.$activity->title.'</strong> has been saved');
 
         return redirect()->route('activities.index');
