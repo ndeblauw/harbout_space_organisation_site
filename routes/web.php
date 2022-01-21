@@ -20,7 +20,7 @@ Route::get('test', function () {
     throw new \Exception('error Nico morning now awaken');
 });
 
-Route::middleware('isAdmin')->group(function () {
+Route::middleware([])->group(function () {
     Route::resource('activities', \App\Http\Controllers\ActivityController::class);
     Route::get('activities/{activity}/toggle', \App\Http\Controllers\ActivityToggleVisibilityController::class)->name('activities.toggle');
 });
