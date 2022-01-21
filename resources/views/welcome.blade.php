@@ -10,7 +10,7 @@
         <main class="bg-white p-6 flex flex-row" style="min-height: 60vh;">
 
             <div class="w-2/3">
-                <h2 class="text-3xl font-bold">Our upcoming events</h2>
+                <h2 class="text-3xl font-bold">Our upcoming events - Waw</h2>
                 <x-activity-list :activities="$upcoming"/>
             </div>
 
