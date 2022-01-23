@@ -12,19 +12,25 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
+    @if($withAlpine)
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @endif
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
-<body class="antialiased bg-gray-50 flex flex-col">
+<body class="antialiased bg-gray-50 relative">
 
-<div class="block w-100 bg-white shadow z-50">
+    @includeWhen($withToaster && session()->has('success'), 'layouts.site-toastr')
 
-    <!-- header -->
-    <div class="max-w-6xl mx-auto py-4  text-gray-600 text-sm  flex justify-between">
-        <div class="px-6">{{ config('app.name') }}</div>
-        <x-site-menu/>
-        <x-site-right-menu/>
+    <div class="block w-100 bg-white shadow z-50">
+
+        <!-- header -->
+        <div class="max-w-6xl mx-auto py-4 z-40 text-gray-600 text-sm  flex justify-between">
+            <div class="px-6">{{ config('app.name') }}</div>
+            <x-site-menu/>
+            <x-site-right-menu/>
+        </div>
     </div>
-</div>
+
 
 <!-- main page area -->
 <div class="w-100 z-0">

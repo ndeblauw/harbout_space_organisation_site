@@ -1,11 +1,9 @@
-<x-site-layout>
+<x-site-layout withToastr>
 
     <div class="flex flex-col my-16 max-w-4xl mx-auto">
 
         @if(session()->has('success'))
-            <div class="bg-green-50 text-green-500 p-4 mb-6 border border-green-200 rounded-lg">
-                {!! session('success') !!}
-            </div>
+            <span x-data="notification=!notification"></span>
         @endif
 
         <div class="flex justify-between mb-2 pr-6">

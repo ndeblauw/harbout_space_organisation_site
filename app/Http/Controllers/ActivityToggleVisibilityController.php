@@ -10,6 +10,8 @@ class ActivityToggleVisibilityController extends Controller
     {
         $activity->update(['visible' => ! $activity->visible]);
 
+        session()->flash('success', '<strong>'.$activity->title.'</strong> is '.($activity->visible ? 'set to visible' : 'no longer visible').'.');
+
         return redirect()->back();
     }
 }
