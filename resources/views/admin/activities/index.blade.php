@@ -9,6 +9,7 @@
         <div class="flex justify-between mb-2 pr-6">
             <h2 class="text-xl font-semibold">Activities</h2>
             <a href="{{route('activities.create')}}" class="text-green-600 hover:text-green-900">Create new</a>
+            <div>{{ $activities->links() }}</div>
         </div>
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
