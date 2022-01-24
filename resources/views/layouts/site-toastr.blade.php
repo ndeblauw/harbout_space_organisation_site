@@ -1,5 +1,5 @@
 <div
-    x-data="{ show: true }" x-cloak x-transition x-show="show" x-init="setTimeout(() => show = false, 3000)"
+    x-data="{ show: true }" x-cloak x-transition x-show="show" x-init="setTimeout(() => show = false, 10000)"
     class="absolute top-20 right-20 z-50 flex items-center justify-between pl-4 py-2 pr-2 bg-green-50 text-green-500 border border-green-200 rounded-lg opacity-80 shadow-sm"
 >
     <div class="w-12">

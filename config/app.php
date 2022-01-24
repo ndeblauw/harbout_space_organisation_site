@@ -2,6 +2,7 @@
 
 return [
 
+    // Sets the cache ttl for the frontpage content of the app
     'welcome_cache_ttl' => 120,
 
     /*

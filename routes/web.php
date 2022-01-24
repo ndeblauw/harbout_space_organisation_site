@@ -13,18 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Frontend routes for guest visitors
 Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome');
+Route::get('test', function () { throw new \Exception('error Nico morning now awaken'); });
 
-Route::get('test', function () {
-    //abort(401);
-    throw new \Exception('error Nico morning now awaken');
-});
-
-Route::middleware([])->group(function () {
-    Route::resource('activities', \App\Http\Controllers\ActivityController::class);
-    Route::get('activities/{activity}/toggle', \App\Http\Controllers\ActivityToggleVisibilityController::class)->name('activities.toggle');
-});
-
+// Logged in user
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
