@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
@@ -13,12 +14,12 @@ class ActivityController extends Controller
     {
         $activities = Activity::all();
 
-        return view('activities.index', compact('activities'));
+        return view('admin.activities.index', compact('activities'));
     }
 
     public function create()
     {
-        return view('activities.create');
+        return view('admin.activities.create');
     }
 
     public function store(CreateActivityRequest $request)
@@ -30,12 +31,12 @@ class ActivityController extends Controller
 
     public function show(Activity $activity)
     {
-        return view('activities.show', compact('activity'));
+        return view('admin.activities.show', compact('activity'));
     }
 
     public function edit(Activity $activity)
     {
-        return view('activities.edit', compact('activity'));
+        return view('admin.activities.edit', compact('activity'));
     }
 
     public function update(UpdateActivityRequest $request, Activity $activity)

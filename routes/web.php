@@ -29,4 +29,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Admin routes
+Route::middleware([])->prefix('admin')->group(function () {
+    Route::resource('activities', \App\Http\Controllers\Admin\ActivityController::class);
+    Route::get('activities/{activity}/toggle', \App\Http\Controllers\Admin\ActivityToggleVisibilityController::class)->name('activities.toggle');
+});
+
+
 require __DIR__.'/auth.php';
