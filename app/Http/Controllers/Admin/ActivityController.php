@@ -26,6 +26,8 @@ class ActivityController extends Controller
     {
         $activity = Activity::create($request->validated());
 
+        $this->clearActivityCache();
+
         return redirect()->route('activities.index');
     }
 
@@ -47,8 +49,8 @@ class ActivityController extends Controller
             $activity->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        cache()->forget('welcome_upcoming');
-        cache()->forget('welcome_past');
+        $this->clearActivityCache();
+
         session()->flash('success', 'Update of <strong>'.$activity->title.'</strong> has been saved');
 
         return redirect()->route('activities.index');
@@ -57,5 +59,13 @@ class ActivityController extends Controller
     public function destroy(Activity $activity)
     {
         //To be implement by students
+    }
+
+    private function clearActivityCache()
+    {
+        cache()->forget('welcome_upcoming');
+        cache()->forget('welcome_past');
+
+        cache()->forget('activities_all');
     }
 }
