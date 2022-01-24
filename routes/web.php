@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // Frontend routes for guest visitors
 Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome');
-Route::get('test', function () { throw new \Exception('error Nico morning now awaken'); });
+Route::get('test', function () {
+    throw new \Exception('error Nico morning now awaken');
+});
 
 // Logged in user
 Route::get('/dashboard', function () {
@@ -28,6 +29,5 @@ Route::middleware([])->prefix('admin')->group(function () {
     Route::resource('activities', \App\Http\Controllers\Admin\ActivityController::class);
     Route::get('activities/{activity}/toggle', \App\Http\Controllers\Admin\ActivityToggleVisibilityController::class)->name('activities.toggle');
 });
-
 
 require __DIR__.'/auth.php';
