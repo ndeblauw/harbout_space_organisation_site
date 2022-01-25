@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css?'.rand(1,1000)) }}">
 
     <!-- Scripts -->
     @if($withAlpine)
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @endif
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireStyles
 </head>
 <body class="antialiased bg-gray-50 relative">
 
@@ -57,6 +58,7 @@
     </div>
 </div>
 
+    @livewireScripts
 </body>
 </html>
 

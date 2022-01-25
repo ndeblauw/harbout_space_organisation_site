@@ -7,6 +7,14 @@
             <h2 class="block text-2xl font-semi-bold text-blue-50">{{ __('and a tagline or explanation is printed here') }}</h2>
         </div>
 
+        <!-- Livewire example -->
+        <div class="w-full bg-red-100 p-6 my-8">
+
+            @foreach($locations->take(4) as $location)
+                <livewire:location-info :location="$location"/>
+            @endforeach
+        </div>
+
         <!-- main content -->
         <main class="bg-white p-6 flex flex-row" style="min-height: 60vh;">
 
