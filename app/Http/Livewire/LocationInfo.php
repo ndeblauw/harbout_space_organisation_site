@@ -11,7 +11,7 @@ class LocationInfo extends Component
 
     public function toggleShowDetails()
     {
-        $this->show_details = !$this->show_details;
+        $this->show_details = ! $this->show_details;
     }
 
     public function render()
