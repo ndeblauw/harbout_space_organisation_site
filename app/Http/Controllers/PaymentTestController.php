@@ -12,20 +12,20 @@ class PaymentTestController extends Controller
         // Given that you have an ACTIVITY and a USER, you can make a REGISTRATION that has an ID
         ray()->clearAll();
 
-        $expose = "https://ldji5cgjob.sharedwithexpose.com/payments-test/webhook/";
+        $expose = 'https://ldji5cgjob.sharedwithexpose.com/payments-test/webhook/';
 
         $webhook_url = app()->environment('production') ? route('webhooks.mollie') : $expose;
 
         $payment = Mollie::api()->payments->create([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => "23.14" // You must send the correct number of decimals, thus we enforce the use of strings
+            'amount' => [
+                'currency' => 'EUR',
+                'value' => '23.14', // You must send the correct number of decimals, thus we enforce the use of strings
             ],
-            "description" => "Order Andorra Trip Registration #22",
-            "redirectUrl" => route('order.success', ['id' => 22]), //This is the REGISTRATION ID of course
-            "webhookUrl" => $webhook_url,
-            "metadata" => [
-                "registration_id" => "22", // And again, this is set dynamically
+            'description' => 'Order Andorra Trip Registration #22',
+            'redirectUrl' => route('order.success', ['id' => 22]), //This is the REGISTRATION ID of course
+            'webhookUrl' => $webhook_url,
+            'metadata' => [
+                'registration_id' => '22', // And again, this is set dynamically
             ],
         ]);
 
@@ -48,7 +48,7 @@ class PaymentTestController extends Controller
 
     public function webhook(Request $request)
     {
-        if($request->has('id')) {
+        if ($request->has('id')) {
             $payment = Mollie::api()->payments->get($request->id);
         }
 
