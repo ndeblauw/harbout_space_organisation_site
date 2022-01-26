@@ -27,6 +27,13 @@ class Activity extends Model implements HasMedia
         return $this->belongsTo(Location::class);
     }
 
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('payment_status');
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('small')

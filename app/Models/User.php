@@ -45,4 +45,10 @@ class User extends Authenticatable
             $profile = Profile::create(['user_id' => $user->id]);
         });
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
+
 }
