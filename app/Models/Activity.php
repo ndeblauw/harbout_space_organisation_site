@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\VisibleScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,8 +20,14 @@ class Activity extends Model implements HasMedia
 
     protected $casts = [
         'begin_date' => 'datetime',
+        'end_date' => 'datetime',
         'visible' => 'boolean',
     ];
+
+    protected static function booted()
+    {
+        //static::addGlobalScope(new VisibleScope);
+    }
 
     public function location()
     {
@@ -31,6 +38,34 @@ class Activity extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class)->withPivot('payment_status');
     }
+
+    public function scopeVisible($query)
+    {
+        return $query->where('visible', '=', true);
+    }
+
+    public function scopeUpcoming($query)
+    {
+        return $query->where('begin_date', '>=', now())->orderBy('begin_date', 'asc');
+    }
+
+    public function scopeRandomSelectionFromPast($query, $amount)
+    {
+        return $query->where('begin_date', '<', now())->inRandomOrder()->take($amount);
+    }
+
+    public function getDurationAttribute()
+    {
+        // strict comparison vs loose comparison
+
+        if( $this->begin_date === null ) {
+            return 0;
+        }
+
+        return $this->end_date->diffInMinutes($this->begin_date)/60;
+    }
+
+
 
     public function registerMediaConversions(Media $media = null): void
     {

@@ -10,13 +10,13 @@ class WelcomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $ttl = config('app.welcome_cache_ttl');
+        $ttl = 1;
 
         $upcoming = cache()->remember('welcome_upcoming', $ttl, function () {
-            return Activity::where('begin_date', '>=', now())->orderBy('begin_date', 'asc')->get();
+            return Activity::visible()->upcoming()->get();
         });
         $selection_past = cache()->remember('welcome_past', $ttl, function () {
-            return Activity::where('begin_date', '<', now())->inRandomOrder()->take(5)->get();
+            return Activity::randomSelectionFromPast(10)->get();
         });
         $locations = cache()->remember('welcome_location', $ttl, function () {
             return Location::all();
