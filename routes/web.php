@@ -22,6 +22,11 @@ Route::get('test', function () {
     throw new \Exception('error Nico morning now awaken');
 });
 
+// Testing the payments
+Route::get('payments-test/start', [\App\Http\Controllers\PaymentTestController::class, 'preparePayment']);
+Route::get('payments-test/after/{id}', [\App\Http\Controllers\PaymentTestController::class, 'afterPayment'])->name('order.success');
+Route::post('payments-test/webhook', [\App\Http\Controllers\PaymentTestController::class, 'webhook'])->name('webhooks.mollie');
+
 // Logged in user
 Route::get('/dashboard', function () {
     return view('dashboard');
