@@ -58,14 +58,12 @@ class Activity extends Model implements HasMedia
     {
         // strict comparison vs loose comparison
 
-        if( $this->begin_date === null ) {
+        if ($this->begin_date === null) {
             return 0;
         }
 
-        return $this->end_date->diffInMinutes($this->begin_date)/60;
+        return $this->end_date->diffInMinutes($this->begin_date) / 60;
     }
-
-
 
     public function registerMediaConversions(Media $media = null): void
     {
